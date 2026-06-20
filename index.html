@@ -407,8 +407,8 @@ body.fs-xlarge [style*="font-size:9px"]  { font-size:15px !important }
   <div id="practice-nudge" style="padding:14px 16px 0;display:none"></div>
   <div id="hcon" style="padding:14px 16px 0"></div>
   <div style="text-align:center;padding:26px 16px 20px;margin-top:6px;border-top:1px solid #e8edf5">
-    <img id="brandLogo" alt="貴格會新埔教會" style="height:74px;width:auto;display:block;margin:0 auto 7px;border-radius:16px;box-shadow:0 2px 10px rgba(0,0,0,.12)">
-    <div style="font-size:12px;color:#1a3a6b;letter-spacing:2px;text-transform:uppercase">貴格會新埔教會</div>
+    <img id="brandLogo" alt="台灣貴格會聯會" style="height:74px;width:auto;display:block;margin:0 auto 7px;border-radius:16px;box-shadow:0 2px 10px rgba(0,0,0,.12)">
+    <div style="font-size:12px;color:#1a3a6b;letter-spacing:2px;text-transform:uppercase">台灣貴格會聯會</div>
     <div style="font-size:16px;color:#1e4d8c;font-weight:800;margin-top:7px">祝你每日靠主得勝 &#127942;</div>
   </div>
 </div>
@@ -3166,7 +3166,7 @@ function initFont(){
 }
 
 // ── Settings page ──
-function getProfile(){return lsG("p4_profile")||{name:"",church:"貴格會新埔教會"};}
+function getProfile(){return lsG("p4_profile")||{name:"",church:"台灣貴格會聯會"};}
 function setProfileField(k,v){var p=getProfile();p[k]=v;lsS("p4_profile",p);}
 function openSettings(){renderSettings();var m=document.getElementById("settings-modal");if(m)m.style.display="flex";}
 function closeSettings(){var m=document.getElementById("settings-modal");if(m)m.style.display="none";}
@@ -3183,7 +3183,7 @@ function renderSettings(){
   h+='<div style="font-size:13px;color:#7a8fa8;margin-bottom:4px">姓名／稱呼</div>';
   h+='<input class="inp" value="'+esc(p.name||"")+'" placeholder="例：李弟兄、淑芬姊妹" oninput="setProfileField(\'name\',this.value)" style="margin-bottom:12px">';
   h+='<div style="font-size:13px;color:#7a8fa8;margin-bottom:4px">教會／團契</div>';
-  h+='<input class="inp" value="'+esc(p.church||"")+'" placeholder="例：貴格會新埔教會" oninput="setProfileField(\'church\',this.value)">';
+  h+='<input class="inp" value="'+esc(p.church||"")+'" placeholder="例：台灣貴格會聯會" oninput="setProfileField(\'church\',this.value)">';
   h+='</div>';
   // 每日提醒
   h+=renderReminderSection();
@@ -4029,7 +4029,7 @@ function _drawCard(){
   // Top band: brand + date
   ctx.textAlign="left";
   ctx.font="bold 20px "+FF;ctx.fillStyle=th.text;ctx.textAlign="left";
-  if(_brandImg&&_brandImg.complete&&_brandImg.naturalWidth){var _bs=38,_bx=40,_by=25;ctx.save();_rrPath(ctx,_bx,_by,_bs,_bs,9);ctx.clip();var _iw=_brandImg.naturalWidth,_ih=_brandImg.naturalHeight,_sc=Math.max(_bs/_iw,_bs/_ih);ctx.drawImage(_brandImg,_bx+(_bs-_iw*_sc)/2,_by+(_bs-_ih*_sc)/2,_iw*_sc,_ih*_sc);ctx.restore();ctx.font="bold 20px "+FF;ctx.fillStyle=th.text;ctx.textAlign="left";ctx.fillText("貴格會新埔教會",_bx+_bs+11,54);}else{ctx.font="bold 20px "+FF;ctx.fillStyle=th.text;ctx.textAlign="left";ctx.fillText("貴格會新埔教會",40,54);}
+  if(_brandImg&&_brandImg.complete&&_brandImg.naturalWidth){var _bs=38,_bx=40,_by=25;ctx.save();_rrPath(ctx,_bx,_by,_bs,_bs,9);ctx.clip();var _iw=_brandImg.naturalWidth,_ih=_brandImg.naturalHeight,_sc=Math.max(_bs/_iw,_bs/_ih);ctx.drawImage(_brandImg,_bx+(_bs-_iw*_sc)/2,_by+(_bs-_ih*_sc)/2,_iw*_sc,_ih*_sc);ctx.restore();ctx.font="bold 20px "+FF;ctx.fillStyle=th.text;ctx.textAlign="left";ctx.fillText("台灣貴格會聯會",_bx+_bs+11,54);}else{ctx.font="bold 20px "+FF;ctx.fillStyle=th.text;ctx.textAlign="left";ctx.fillText("台灣貴格會聯會",40,54);}
   var today=tod();var dt=new Date(today+"T00:00:00");
   var dateStr=dt.getFullYear()+"年"+(dt.getMonth()+1)+"月"+dt.getDate()+"日";
   ctx.textAlign="right";ctx.font="14px "+FF;ctx.fillStyle=th.sub;
