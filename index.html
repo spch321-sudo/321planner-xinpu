@@ -7834,7 +7834,7 @@ function _escAttr(s){return _esc(s).replace(/"/g,'&quot;');}
    版本與自動更新：由 upd321.js 掛件負責（version.json 輪詢＋Service Worker 更新＋空閒時自動套用，
    忙碌時只顯示頂端「有新版本」更新條）。發佈新版時：APP_VERSION、version.json、sw.js 的 VER、README 四處一起往上加。
    ============================================================ */
-var APP_VERSION = "1.16.0-up1103";        /* ★ 每次發佈新版請往上加 */
+var APP_VERSION = "1.16.0-up1103-xz1103";        /* ★ 每次發佈新版請往上加 */
 function checkAppUpdate(){ try{ UPD321.check(0); }catch(e){} }
 function doAppUpdate(){ try{ UPD321.apply(false); }catch(e){} }
 function dismissUpdate(){ var b = document.getElementById('update-banner'); if(b) b.style.display='none'; }
@@ -7875,6 +7875,7 @@ window.GXR_CFG = {
   hl: true
 };
 window.GXA_CFG = {
+  xzSet: { sel: '#settings-body' },
   name: "321每日得勝", nameEn: "321 Daily Victory", slug: "planner-xinpu", lang: function () { return "zh"; },
   lessons: function () {
     var out = [], LBL = ["每日經文與提醒"];
@@ -7893,9 +7894,10 @@ window.GXA_CFG = {
 };
 </script>
 <script src="gxr.js?v=gx1103"></script>
-<script src="gxa.js?v=gx1103"></script>
-<script>var APPVER="1.16.0-up1103";window.UPD321_VER=APPVER;window.UPD321_PFX=["plxp321-"];window.UPD321_BUSY=function(){var ms=document.querySelectorAll("[id$=\"-modal\"]");for(var i=0;i<ms.length;i++){var d=ms[i].style.display;if(d&&d!=="none")return true;}return false;};</script>
-<script src="upd321.js?v=1.16.0-up1103"></script>
+<script src="xz2.js?v=xz1103"></script>
+<script src="gxa.js?v=gx1103-xz1103"></script>
+<script>var APPVER="1.16.0-up1103-xz1103";window.UPD321_VER=APPVER;window.UPD321_PFX=["plxp321-"];window.UPD321_BUSY=function(){var ms=document.querySelectorAll("[id$=\"-modal\"]");for(var i=0;i<ms.length;i++){var d=ms[i].style.display;if(d&&d!=="none")return true;}return false;};</script>
+<script src="upd321.js?v=1.16.0-up1103-xz1103"></script>
 <script>UPD321.mountWhen("#settings-body","end");</script>
 </body>
 </html>
