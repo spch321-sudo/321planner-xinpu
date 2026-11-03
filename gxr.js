@@ -1342,7 +1342,7 @@ var TTS321 = (function () {
       lang: EN ? 'en-US' : (ZS ? 'zh-CN' : 'zh-TW'),
       chunk: EN ? { punct: '.!?;\n', min: 140, max: 320 } : { punct: '。！？；\n', min: 110, max: 300 },
       script: ZS ? 'sc' : 'tc',
-      media: { artist: CF.name || '321', album: S3('國度321空中團契', '国度321空中团契', 'Kingdom 321 Fellowship') },
+      media: { artist: CF.name || '321', album: S3('貴格會新埔教會', '国度321空中团契', 'Xinpu Friends Church') },
       settings: { get: function () { return ST; }, save: keep },
       labels: TTSLAB,
       clean: speechClean,

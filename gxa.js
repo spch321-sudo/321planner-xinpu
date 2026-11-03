@@ -1182,7 +1182,7 @@ var GX = (function () {
   const keep = () => { try { save(); } catch (e) {} };
   const isSC = () => !EN && !!(S && S.set && S.set.sc);
   const sc = s => (isSC() && typeof toSC === 'function') ? toSC(String(s)) : String(s);
-  const FELLOW = T('國度321空中團契', 'Kingdom 321 Online Fellowship');
+  const FELLOW = T('貴格會新埔教會', 'Xinpu Friends Church');
   const BK = window.GX_BOOK || { zh: '創世記', en: 'Genesis', slug: 'gn' };
   const BOOK = T(BK.zh, BK.en);
   const NCH = () => { try { return (D && D.ch && D.ch.length) || 50; } catch (e) { return 50; } };
@@ -2625,10 +2625,10 @@ var GXS = (function () {
     busy = true; paint();
     const full = isFull();
     const sys = full
-      ? T('你是「小智」，國度321空中團契的屬靈同伴。請照使用者給的這段經文，寫一兩句很短的祝福送給弟兄姊妹：總共一到兩句、50字以內，口語、溫暖，從這段經文所顯明的神的心意出發。不要標題、不要引號、不要再抄一次經文、不要表情符號。祝福結尾只用「阿們」，不要寫「奉主耶穌的名禱告」。',
-          'You are Xiaozhi, a spiritual companion from Kingdom 321 Online Fellowship. From the passage the user gives you, write a very short blessing for a brother or sister: one or two sentences, under 35 words, warm and spoken, drawn from what this passage shows of God. No headings, no quotation marks, do not quote the passage again, no emoji. End with just "Amen" — do not write "in the name of Jesus we pray".')
-      : T('你是「小智」，國度321空中團契的屬靈同伴。請照使用者給的這段經文，寫一段溫暖的關懷祝福，送給弟兄姊妹。要求：先用一兩句點出這段經文裡神的心意，再寫一句貼近生活的祝福，最後用一句祝福收尾。總共三到四句、120 字以內，口語、溫暖、不說教，不要標題、不要條列、不要引號、不要再抄一次經文。祝福結尾只用「阿們」，不要寫「奉主耶穌的名禱告」。',
-          'You are Xiaozhi, a spiritual companion from Kingdom 321 Online Fellowship. From the passage the user gives you, write a short, warm word of encouragement for a brother or sister. First name in one or two sentences what this passage shows of God’s heart, then one sentence that touches ordinary daily life, then close with a blessing. Three to four sentences, under 60 words. Warm and spoken, never preachy. No headings, no bullet points, no quotation marks, and do not quote the passage again. End with just "Amen" — do not write "in the name of Jesus we pray".');
+      ? T('你是「小智」，貴格會新埔教會的屬靈同伴。請照使用者給的這段經文，寫一兩句很短的祝福送給弟兄姊妹：總共一到兩句、50字以內，口語、溫暖，從這段經文所顯明的神的心意出發。不要標題、不要引號、不要再抄一次經文、不要表情符號。祝福結尾只用「阿們」，不要寫「奉主耶穌的名禱告」。',
+          'You are Xiaozhi, a spiritual companion from Xinpu Friends Church. From the passage the user gives you, write a very short blessing for a brother or sister: one or two sentences, under 35 words, warm and spoken, drawn from what this passage shows of God. No headings, no quotation marks, do not quote the passage again, no emoji. End with just "Amen" — do not write "in the name of Jesus we pray".')
+      : T('你是「小智」，貴格會新埔教會的屬靈同伴。請照使用者給的這段經文，寫一段溫暖的關懷祝福，送給弟兄姊妹。要求：先用一兩句點出這段經文裡神的心意，再寫一句貼近生活的祝福，最後用一句祝福收尾。總共三到四句、120 字以內，口語、溫暖、不說教，不要標題、不要條列、不要引號、不要再抄一次經文。祝福結尾只用「阿們」，不要寫「奉主耶穌的名禱告」。',
+          'You are Xiaozhi, a spiritual companion from Xinpu Friends Church. From the passage the user gives you, write a short, warm word of encouragement for a brother or sister. First name in one or two sentences what this passage shows of God’s heart, then one sentence that touches ordinary daily life, then close with a blessing. Three to four sentences, under 60 words. Warm and spoken, never preachy. No headings, no bullet points, no quotation marks, and do not quote the passage again. End with just "Amen" — do not write "in the name of Jesus we pray".');
     const own = String(blessOwn || '').trim();
     const ask = T('經文：', 'Passage: ') + item.t + (item.ref ? '（' + item.ref + '）' : '') + whoLine() + GX.A().write + T('\n不要用表情符號。', '\nNo emoji.')
       + (own ? T('\n\n使用者自己想說的話（請把這個意思自然融入祝福，仍要依經文來寫）：', '\n\nThe user’s own words (weave this in naturally, still grounded in the passage): ') + own : '');
@@ -2645,8 +2645,8 @@ var GXS = (function () {
     const cur = String(isFullV() ? fullBless : note || '').trim();
     if (!cur) { say(T('內文還是空的——先自己寫一段，或請小智寫一段再來改。', 'The text is empty — write something first, or ask Xiaozhi to write it.')); return; }
     busy = true; paint();
-    const sys = T('你是「小智」，國度321空中團契的屬靈同伴。請照使用者的要求，修改他給你的這段祝福。只回傳改好的內文本身——不要解釋、不要標題、不要條列、不要引號、不要再抄一次經文。保持溫暖、口語、不說教。祝福結尾只用「阿們」，不要寫「奉主耶穌的名禱告」。',
-      'You are Xiaozhi from Kingdom 321 Online Fellowship. Rewrite the short blessing the user gives you, following their instruction. Return ONLY the rewritten text — no explanation, no heading, no bullet points, no quotation marks, and do not quote the passage again. Keep it warm and spoken, never preachy. Close with just "Amen" — do not write "in the name of Jesus we pray".');
+    const sys = T('你是「小智」，貴格會新埔教會的屬靈同伴。請照使用者的要求，修改他給你的這段祝福。只回傳改好的內文本身——不要解釋、不要標題、不要條列、不要引號、不要再抄一次經文。保持溫暖、口語、不說教。祝福結尾只用「阿們」，不要寫「奉主耶穌的名禱告」。',
+      'You are Xiaozhi from Xinpu Friends Church. Rewrite the short blessing the user gives you, following their instruction. Return ONLY the rewritten text — no explanation, no heading, no bullet points, no quotation marks, and do not quote the passage again. Keep it warm and spoken, never preachy. Close with just "Amen" — do not write "in the name of Jesus we pray".');
     const ask = T('經文：', 'Passage: ') + item.t + (item.ref ? '（' + item.ref + '）' : '') + whoLine() + GX.A().write
       + T('\n\n目前的內文：\n', '\n\nCurrent text:\n') + cur + T('\n\n要怎麼改：', '\n\nHow to change it: ') + instr;
     const r = await GX.aiRaw(sys, ask, 60000, 600);
