@@ -7829,71 +7829,20 @@ function _escAttr(s){return _esc(s).replace(/"/g,'&quot;');}
 <button id="fab" title="快速記錄">✦</button>
 
 <script>
-/* ============================================================
-   清除舊的 service worker 與快取
-   （避免使用者一直被舊版本卡住；本 App 不需要 service worker）
-   ============================================================ */
-(function(){
-  try{
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.getRegistrations().then(function(rs){
-        rs.forEach(function(r){ r.unregister(); });
-      }).catch(function(){});
-    }
-    if(window.caches && caches.keys){
-      caches.keys().then(function(ks){
-        ks.forEach(function(k){ caches.delete(k); });
-      }).catch(function(){});
-    }
-  }catch(e){}
-})();
 
 /* ============================================================
-   App 版本更新提醒 (開啟即檢查)
-   發佈新版時：
-   1) 把下面 APP_VERSION 的號碼往上加（例如 1.0.1 → 1.1.0）
-   2) 在你的網站放一個 version.json，內容像這樣：
-      {"version":"1.1.0","notes":"新增關懷統計","url":"https://你的網址/321planner.html"}
-   3) 把 VERSION_CHECK_URL 填成那個 version.json 的網址
-   舊版使用者一開啟 App（有網路時）就會看到更新橫幅。
+   版本與自動更新：由 upd321.js 掛件負責（version.json 輪詢＋Service Worker 更新＋空閒時自動套用，
+   忙碌時只顯示頂端「有新版本」更新條）。發佈新版時：APP_VERSION、version.json、sw.js 的 VER、README 四處一起往上加。
    ============================================================ */
-var APP_VERSION = "1.15.1-gx1103";        /* ★ 每次發佈新版請往上加 */
-var VERSION_CHECK_URL = "https://spch321-sudo.github.io/321planner/version.json";       /* ★ 你的 version.json 網址 */
-var _updateInfo = null;
-function checkAppUpdate(){
-  if(!VERSION_CHECK_URL) return;
-  try{
-    var url = VERSION_CHECK_URL + (VERSION_CHECK_URL.indexOf('?')<0?'?':'&') + '_t=' + Date.now();
-    fetch(url, {cache:'no-store'})
-      .then(function(r){ return r.json(); })
-      .then(function(j){
-        if(!j || !j.version) return;
-        if(j.version !== APP_VERSION && localStorage.getItem('p4_skipver') !== j.version){
-          _updateInfo = j;
-          var t = document.getElementById('update-banner-text');
-          if(t) t.innerHTML = '🔔 有新版本 <strong>v'+j.version+'</strong>' + (j.notes ? '｜'+j.notes : '') + '<br><span style="font-size:12px;opacity:.9">點「立即更新」下載最新版</span>';
-          var b = document.getElementById('update-banner');
-          if(b) b.style.display = 'flex';
-        }
-      })
-      .catch(function(){});
-  }catch(e){}
-}
-function doAppUpdate(){
-  if(_updateInfo && _updateInfo.url){ window.open(_updateInfo.url, '_blank'); }
-  else { try{ location.reload(true); }catch(e){ location.reload(); } }
-}
-function dismissUpdate(){
-  if(_updateInfo && _updateInfo.version){ try{ localStorage.setItem('p4_skipver', _updateInfo.version); }catch(e){} }
-  var b = document.getElementById('update-banner'); if(b) b.style.display='none';
-}
-window.addEventListener('load', function(){ setTimeout(checkAppUpdate, 1500); });
+var APP_VERSION = "1.16.0-up1103";        /* ★ 每次發佈新版請往上加 */
+function checkAppUpdate(){ try{ UPD321.check(0); }catch(e){} }
+function doAppUpdate(){ try{ UPD321.apply(false); }catch(e){} }
+function dismissUpdate(){ var b = document.getElementById('update-banner'); if(b) b.style.display='none'; }
 window.addEventListener('load', function(){ setTimeout(function(){ try{ checkBackupReminder(); }catch(e){} }, 2800); });
 window.addEventListener('load', function(){ setTimeout(function(){ try{ checkMilestone(); }catch(e){} }, 1800); });
 window.addEventListener('load', function(){ setTimeout(function(){ try{ checkWelcomeBack(); }catch(e){} }, 2200); });
 window.addEventListener('load', function(){ setTimeout(function(){ try{ if(getFbConfig()) initCloud(); }catch(e){} }, 1200); });
 window.addEventListener('load', function(){ try{ var bl=document.getElementById('brandLogo'); if(bl&&!bl.getAttribute('src')) bl.src=LOGO_TEXT; }catch(e){} });
-document.addEventListener('visibilitychange', function(){ if(!document.hidden) checkAppUpdate(); });
 </script>
 
 
@@ -7945,5 +7894,8 @@ window.GXA_CFG = {
 </script>
 <script src="gxr.js?v=gx1103"></script>
 <script src="gxa.js?v=gx1103"></script>
+<script>var APPVER="1.16.0-up1103";window.UPD321_VER=APPVER;window.UPD321_PFX=["plxp321-"];window.UPD321_BUSY=function(){var ms=document.querySelectorAll("[id$=\"-modal\"]");for(var i=0;i<ms.length;i++){var d=ms[i].style.display;if(d&&d!=="none")return true;}return false;};</script>
+<script src="upd321.js?v=1.16.0-up1103"></script>
+<script>UPD321.mountWhen("#settings-body","end");</script>
 </body>
 </html>
